@@ -1,84 +1,77 @@
-# Air Pollution Prediction in Ho Chi Minh City using CNN-BiLSTM
+# 🌫️ PM2.5 Air Pollution Prediction with CNN–BiLSTM
 
-## 📌 Overview
-This project implements a deep learning model for **time series prediction of PM2.5 air pollution concentration** in Ho Chi Minh City, Vietnam.  
-The approach integrates **Convolutional Neural Networks (CNN)** for feature extraction and **Bidirectional Long Short-Term Memory (Bi-LSTM)** networks for temporal sequence modeling.
+## 📌 Introduction
+This project focuses on predicting fine particulate matter (PM2.5) concentrations in Ho Chi Minh City using a **hybrid deep learning model**. The approach combines **Convolutional Neural Networks (CNN)** for feature extraction and **Bidirectional Long Short-Term Memory (Bi-LSTM)** for capturing temporal dependencies.  
 
-Air pollution, especially PM2.5, is a critical environmental issue in urban areas. Accurate forecasting helps provide early warnings, support decision-making, and protect public health.
+The project improves upon the baseline PM25-CBL model by optimizing parameters, reducing complexity, and achieving higher prediction accuracy.
 
 ---
 
-## 🗂 Dataset
-- **Source**: Open Development Mekong – Vietnam Air Quality Data Series (2020–2021)  
-- **Location**: Ho Chi Minh City  
-- **Variables used**:  
+## 📊 Dataset
+- **Source:** Air Quality HCMC dataset (Open Development Mekong, 2020)  
+- **Features used:**  
   - Temperature  
   - Humidity  
   - Wind Speed  
-  - Dew Point  
+  - Dew  
   - Pressure  
-  - PM2.5 concentration (target variable)  
-- **Frequency**: Daily aggregated data  
+  - PM2.5 (target variable)  
+- **Preprocessing:** Missing value handling, normalization using Min–Max scaling, train/test split (80/20).  
 
 ---
 
-## ⚙️ Methodology
-1. **Preprocessing**
-   - Data cleaning, handling missing values, and outlier treatment  
-   - Feature scaling using Min-Max normalization  
-   - Transforming time series into supervised learning format  
+## 🏗️ Methodology
+1. **Data Preprocessing**
+   - Handle missing values
+   - Normalize features with Min–Max Scaler
+   - Create time-series sequences  
 
-2. **Model Architecture (CNN-BiLSTM)**
-   - **CNN module**: 1D Convolutions + MaxPooling for feature extraction  
-   - **Bi-LSTM module**: Captures sequential dependencies in both forward and backward directions  
-   - **Dense layer**: Outputs PM2.5 prediction  
+2. **Model Architecture**
+   - **CNN (Separable Convolution):** Extract local temporal features  
+   - **Bi-LSTM:** Learn bidirectional time dependencies  
+   - **Fully Connected Layer:** Output PM2.5 prediction  
 
-3. **Baselines for comparison**
-   - LSTM  
-   - Bi-LSTM  
-   - CNN  
-   - CNN-LSTM  
-   - ARIMA  
-
----
-
-## 📊 Results
-- Evaluation metrics: **MSE, RMSE, MAE, MAPE**  
-- CNN-BiLSTM consistently outperformed baseline models, achieving **lower error rates and better prediction accuracy** on the Air Quality HCMC dataset.  
-- Visualizations include training/testing loss curves and comparison plots of actual vs. predicted PM2.5 levels.
+3. **Evaluation Metrics**
+   - MSE (Mean Squared Error)  
+   - RMSE (Root Mean Squared Error)  
+   - MAE (Mean Absolute Error)  
+   - MAPE (Mean Absolute Percentage Error)  
 
 ---
 
-## 🚀 How to Run
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Truong-Thai-Bao/Air-pollution-prediction-hcmc-cnn-bilstm.git
-   cd Air-pollution-prediction-hcmc-cnn-bilstm
-   ```
-2. Install dependencies:
-  ```bash
-    pip install -r requirements.txt
-  ```
+## 🚀 Results
+- The proposed **PM25-CBLo model** significantly outperformed baseline models (CNN, LSTM, Bi-LSTM, CNN-LSTM, PM25-CBL).  
+- **Best performance:**  
+  - MSE: 0.907  
+  - RMSE: 0.952  
+  - MAE: 0.762  
+  - MAPE: 2.909%  
 
-3. Run the Jupyter notebook:
+The optimized CNN–BiLSTM architecture reduced parameters by ~3x compared to PM25-CBL, while improving accuracy and lowering computational cost.
 
-jupyter notebook cnn_bilstm_2020.ipynb
+---
 
-## 📌 Requirements
 
-- Python 3.8+
+---
 
-- TensorFlow / Keras
+## ⚙️ Technologies
+- Python 3.x  
+- Google Colab  
+- NumPy, Pandas  
+- Matplotlib, Seaborn  
+- Scikit-learn  
+- TensorFlow/Keras  
 
-- NumPy, Pandas, Matplotlib, Seaborn
+---
 
-- scikit-learn
+## 📈 Future Work
+- Extend to multi-step forecasting (predicting multiple future time steps).  
+- Integrate external features (e.g., traffic, satellite data).  
+- Deploy as a real-time monitoring dashboard.  
 
-## 📖 Reference
+---
 
-This work is inspired by the paper:
-
-Minh Thanh Vo, Anh H. Vo, Huong Bui, Tuong Le.
-A Hybrid Deep Learning Approach for PM2.5 Concentration Prediction in Smart Environmental Monitoring.
-Intelligent Automation & Soft Computing, 202x. DOI:10.32604/iasc.202x.xxxxxx
+## 📚 References
+- Vo, M.T. et al. (2023). *A Hybrid Deep Learning Approach for PM2.5 Concentration Prediction in Smart Environmental Monitoring.* Intelligent Automation & Soft Computing, 36(3), 3029–3041.  
+- Open Development Mekong (2020). *Dataset on Air Quality in Vietnam.*  
 
